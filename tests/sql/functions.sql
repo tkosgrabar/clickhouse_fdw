@@ -55,6 +55,8 @@ EXPLAIN (VERBOSE, COSTS OFF)
 	SELECT coalesce(a::text, b::text, c::text) FROM t1 GROUP BY a, b, c;
 SELECT coalesce(a::text, b::text, c::text) FROM t1 GROUP BY a, b, c;
 
+SELECT 1;
+
 -- check IN functions
 EXPLAIN (VERBOSE, COSTS OFF)
 	SELECT a, sum(b) FROM t1 WHERE a IN (1,2,3) GROUP BY a;
