@@ -111,7 +111,7 @@ SELECT coalesce(a::text, b::text, c::text) FROM t1 GROUP BY a, b, c;
 
 SELECT 1 AS sample;
  sample
-----------
+--------
         1
 (1 row)
 
