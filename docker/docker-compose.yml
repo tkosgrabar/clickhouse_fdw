@@ -1,0 +1,22 @@
+version: '3'
+services:
+  clickhouse:
+    image: yandex/clickhouse-server
+    ports:
+      - "8123:8123"
+    environment:
+      CLICKHOUSE_USER: ch_user
+      CLICKHOUSE_PASSWORD: ch_pass
+
+  pgclickhouse:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+      args:
+        POSTGRES_VERSION: 14
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo_pass
+      POSTGRES_DB: demo

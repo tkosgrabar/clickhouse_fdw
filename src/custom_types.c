@@ -31,6 +31,7 @@
 #define F_STRPOS 868
 #define F_BTRIM 884
 #define F_BTRIM1 885
+#define F_TO_TIMESTAMP 1778
 
 static HTAB *custom_objects_cache = NULL;
 static HTAB *custom_columns_cache = NULL;
@@ -102,6 +103,7 @@ CustomObjectDef *chfdw_check_for_custom_function(Oid funcid)
 			case F_TIMESTAMPTZ_ZONE:
 			case F_TIMESTAMP_PART:
 			case F_TIMESTAMPTZ_PART:
+			case F_TO_TIMESTAMP:
 			case F_ARRAY_POSITION:
 			case F_STRPOS:
 			case F_BTRIM:
@@ -150,6 +152,12 @@ CustomObjectDef *chfdw_check_for_custom_function(Oid funcid)
 				strcpy(entry->custom_name, "toTimeZone");
 				break;
 			}
+			case F_TO_TIMESTAMP:
+			{
+                entry->cf_type = CF_TO_TIMESTAMP;
+                entry->custom_name[0] = '\1';
+                break;
+            }
 			case F_ARRAY_POSITION:
 			{
 				strcpy(entry->custom_name, "indexOf");

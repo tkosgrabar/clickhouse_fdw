@@ -2458,6 +2458,15 @@ deparseFuncExpr(FuncExpr *node, deparse_expr_cxt *context)
 		appendStringInfoChar(buf, ')');
 		return;
 	}
+	else if (cdef && cdef->cf_type == CF_TO_TIMESTAMP)
+    {
+        pfree(parttype);
+        appendStringInfoString(buf, "parseDateTimeBestEffort");
+        appendStringInfoChar(buf, '(');
+        deparseExpr(list_nth(node->args, 0), context);
+        appendStringInfoChar(buf, ')');
+        return;
+    }
 	else if (cdef && cdef->cf_type == CF_ISTORE_SEED)
 	{
 		if (!context->func)

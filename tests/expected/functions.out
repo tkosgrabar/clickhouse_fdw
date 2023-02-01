@@ -431,7 +431,7 @@ EXPLAIN (VERBOSE, COSTS OFF) SELECT a, dictGet('regression.t3_dict', 'val', (1, 
 -- SELECT a, dictGet('regression.t3_dict', 'val', (1, 'key' || a::text)) as val, sum(b) FROM t3 GROUP BY a, val ORDER BY a;
 DROP USER MAPPING FOR CURRENT_USER SERVER loopback;
 SELECT clickhousedb_raw_query('DROP DATABASE regression');
- clickhousedb_raw_query 
+ clickhousedb_raw_query
 ------------------------
  
 (1 row)
