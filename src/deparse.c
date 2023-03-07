@@ -2460,7 +2460,6 @@ deparseFuncExpr(FuncExpr *node, deparse_expr_cxt *context)
 	}
 	else if (cdef && cdef->cf_type == CF_TO_TIMESTAMP)
     {
-        pfree(parttype);
         appendStringInfoString(buf, "parseDateTimeBestEffort");
         appendStringInfoChar(buf, '(');
         deparseExpr(list_nth(node->args, 0), context);
